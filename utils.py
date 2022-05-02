@@ -42,7 +42,7 @@ def load_data(dataset_str):
     names = ['x', 'y', 'tx', 'ty', 'allx', 'ally', 'graph']
     objects = []
     for i in range(len(names)):
-        with open("/content/gdrive/MyDrive/PFE/data/ind.{}.{}".format(dataset_str, names[i]), 'rb') as f:
+        with open("/pfe-bert/data/ind.{}.{}".format(dataset_str, names[i]), 'rb') as f:
             if sys.version_info > (3, 0):
                 objects.append(pkl.load(f, encoding='latin1'))
             else:
@@ -50,7 +50,7 @@ def load_data(dataset_str):
 
     x, y, tx, ty, allx, ally, graph = tuple(objects)
     test_idx_reorder = parse_index_file(
-        "/content/gdrive/MyDrive/PFE/data/ind.{}.test.index".format(dataset_str))
+        "/pfe-bert/data/ind.{}.test.index".format(dataset_str))
     test_idx_range = np.sort(test_idx_reorder)
     print(x.shape, y.shape, tx.shape, ty.shape, allx.shape, ally.shape)
 
@@ -132,7 +132,7 @@ def load_corpus(dataset_str):
     names = ['x', 'y', 'tx', 'ty', 'allx', 'ally', 'adj']
     objects = []
     for i in range(len(names)):
-        with open("/content/gdrive/MyDrive/PFE/data/ind.{}.{}".format(dataset_str, names[i]), 'rb') as f:
+        with open("/pfe-bert/data/ind.{}.{}".format(dataset_str, names[i]), 'rb') as f:
             if sys.version_info > (3, 0):
                 objects.append(pkl.load(f, encoding='latin1'))
             else:
@@ -146,7 +146,7 @@ def load_corpus(dataset_str):
     print(len(labels))
 
     train_idx_orig = parse_index_file(
-        "/content/gdrive/MyDrive/PFE/data/{}.train.index".format(dataset_str))
+        "/pfe-bert/data/{}.train.index".format(dataset_str))
     train_size = len(train_idx_orig)
 
     val_size = train_size - x.shape[0]
